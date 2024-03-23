@@ -1,24 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ChartReport from './Screen/ChartReport';
+import AnalysisTable from './Screen/AnalysisTable';
+import MapView from './Screen/MapView';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ChartReport />} />
+        <Route path="/den-dien-ha-noi" element={<AnalysisTable />} />
+        <Route path="/vi-tri" element={<MapView />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
