@@ -1,6 +1,7 @@
 import ColumnChart from "../Chart/ColumnChart";
 import Donut from "../Chart/DonutChart";
 import ProgressBar from "../Chart/Progressbar";
+import Clock from "../Component/Clock";
 import Default from "../Template/Default";
 
 function ChartReport() {
@@ -47,21 +48,17 @@ function ChartReport() {
 
     const data3 = {
         labels: [
-            "Test 01",
-            "Test 02",
-            "Test 03",
-            "Test 04",
+            "CO2",
+            "CO"
         ],
         datasets: [
             {
-                label: "Chỉ số bụi mịn",
+                label: "Chỉ số CO2/CO",
                 backgroundColor: [
                     "#3e95cd",
-                    "#8e5ea2",
-                    "#3cba9f",
-                    "#e8c3b9",
+                    "#8e5ea2"
                 ],
-                data: [2478, 5267, 734, 784]
+                data: [400.2, 16]
             }
         ]
     };
@@ -75,18 +72,24 @@ function ChartReport() {
     const progressData2 = {
         title: "Tiết kiệm điện năng",
         percentage: 75,
-        amount: "14.312kWh",
+        amount: "14.312 kWh",
     }
     return (
         // Chart
         <Default>
-            <div className="bg-[#f5f5f5] w-full h-full p-[1%]">
+            <div className="bg-[#f5f5f5] w-full h-full p-[1%] opacity-65">
                 <div className="w-[95%] h-auto bg-white shadow-lg rounded-lg mx-auto p-[1%]">
                     <div className="h-full">
-                        <div className="text-2xl p-[1%]">Tổng quan thiết bị</div>
+
                         <div className="flex h-full">
-                            <div className="w-[20%]"><Donut data={data} /></div>
-                            <div className="w-[18%] mx-[10%]"><Donut data={data2} /></div>
+                            <div className="w-[20%]">
+                                <div className="text-2xl p-[1%] font-bold">Tổng quan thiết bị</div>
+                                <Donut data={data} />
+                            </div>
+                            <div className="mx-[10%]">
+                                <div className="text-2xl p-[1%] font-bold">Giờ chiếu sáng</div>
+                                <Clock height={300} width={300} />
+                            </div>
                             <ProgressBar progressData={progressData} />
                             <div className="w-[10%]"></div>
                             <ProgressBar progressData={progressData2} />
@@ -97,18 +100,33 @@ function ChartReport() {
                 </div>
                 {/* Map */}
                 <div className="flex items-center">
-                    <div className="border border-1 border-[#bdb9b9] w-[40%]  p-[1%] bg-white rounded-lg mt-3 ml-10 shadow-md inline-block">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.030892483734!2d105.80228548600446!3d21.07142833627597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135aae8473a1179%3A0x656e0684de134c65!2zMTYgxJAuIE5ndXnhu4VuIEhvw6BuZyBUw7RuLCBYdcOibiBMYSwgVMOieSBI4buTLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1711089068532!5m2!1svi!2s"
+                    <div className="border border-1 border-[#bdb9b9] w-[40%]  p-[1%] bg-white rounded-lg mt-3 ml-10 shadow-md inline-block relative">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29794.851432769246!2d105.78875276881816!3d21.01841977086442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135acac08698957%3A0xcb92e58f7f3e275c!2zVHJ1bmcgdMOibSBI4buZaSBuZ2jhu4sgUXXhu5FjIGdpYQ!5e0!3m2!1svi!2s!4v1711293048627!5m2!1svi!2s"
                             width="600"
                             height="500"
                             style={{ "border": "0" }}
                             allowfullscreen=""
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div className="w-[30px] h-[30px] rounded-full bg-green-800 animate-ping duration-1000 absolute top-[250px] left-[280px]">Test01</div>
+                        <div className="w-[30px] h-[30px] rounded-full bg-green-800 animate-ping duration-1000 absolute top-[270px] left-[280px]">Test02</div>
+                        <div className="w-[30px] h-[30px] rounded-full bg-green-800 animate-ping duration-1000 absolute top-[250px] left-[320px]">Test03</div>
+                        <div className="w-[30px] h-[30px] rounded-full bg-green-800 animate-ping duration-1000 absolute top-[270px] left-[320px]">Test04</div>
                     </div>
                     <div className=" bg-white rounded-lg mt-3 ml-10 shadow-md p-3 w-[25%]">
-                        <div className="font-semibold text-lg">Chỉ số bụi mịn</div>
-                        <ColumnChart data={data3} height={355} />
+                        <div className="font-semibold text-lg">Chỉ số PM2.5</div>
+                        <div className="flex">
+                            <div className="w-fit bg-red-500 text-5xl p-[10%]">70.6µg/m³</div>
+                        </div>
+                        <div className="font-semibold text-lg">Chỉ số NO2	</div>
+                        <div className="flex">
+                            <div className="w-fit bg-[#ffdd33] text-3xl p-[10%] inline-block">63.6µg/m³</div>
+                        </div>
+                        <div className="font-semibold text-lg">Chỉ số PM10</div>
+                        <div className="flex">
+                            <div className="w-fit bg-[#ffdd33] text-3xl p-[10%] inline-block">104.5µg/m³</div>
+                        </div>
+
                     </div>
                     <div className=" bg-white rounded-lg mt-3 ml-10 shadow-md p-3 w-[25%]">
                         <div className="font-semibold text-lg">Chỉ số CO2</div>
