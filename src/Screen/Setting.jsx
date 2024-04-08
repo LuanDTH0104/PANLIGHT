@@ -40,14 +40,14 @@ function Setting() {
     const [onTime, setOnTime] = useState(localStorage.getItem('onTime') != null ? JSON.parse(localStorage.getItem('onTime')) : { value: 0, label: "18 giờ" });
     const [offTime, setOffTime] = useState(localStorage.getItem('offTime') != null ? JSON.parse(localStorage.getItem('offTime')) : { value: 5, label: "6 giờ" });
     useEffect(() => {
-        const plus                 = document.querySelectorAll('.plus');
-        const minus             = document.querySelectorAll('.minus');
-        const brightness    = document.querySelectorAll('.brightness');
-        const light               = document.querySelectorAll('.light');
-        const rangeTime    = document.querySelectorAll('.rangeTime');
-        const caseTime      = document.querySelectorAll('.caseTime');
-        const saveState     = document.getElementById('saveState');
-        const controlBar   = document.querySelectorAll('.controlBar');
+        const plus = document.querySelectorAll('.plus');
+        const minus = document.querySelectorAll('.minus');
+        const brightness = document.querySelectorAll('.brightness');
+        const light = document.querySelectorAll('.light');
+        const rangeTime = document.querySelectorAll('.rangeTime');
+        const caseTime = document.querySelectorAll('.caseTime');
+        const saveState = document.getElementById('saveState');
+        const controlBar = document.querySelectorAll('.controlBar');
         caseTime.forEach((item, index) => {
             item.addEventListener('click', () => {
                 caseTime.forEach((item) => {
@@ -162,17 +162,27 @@ function Setting() {
     }, [onTime, offTime])
     return (
         <Default>
-            <div className="h-screen flex py-[5%]">
+            <div className="h-screen lg:flex py-[5%]">
                 {/* Setting */}
-                <div className="w-[20%] h-[80%] shadow-lg shadow-slate-300 bg-white rounded-md">
-                    <div className="text-2xl px-5 py-2 hover:bg-blue-300 caseTime" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setSelectedRange(setting.weekly)}><CalendarWeek className="inline-block mr-1 text-yellow-400" /><span className="align-middle">Theo tuần</span></div>
-                    <div className="text-2xl px-5 py-2 hover:bg-blue-300 caseTime" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setSelectedRange(setting.spring)}><Clock className="inline-block mr-1 text-pink-300" /><span className="align-middle">Mùa Xuân</span></div>
-                    <div className="text-2xl px-5 py-2 hover:bg-blue-300 caseTime" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setSelectedRange(setting.summer)}><Clock className="inline-block mr-1 text-orange-300" /><span className="align-middle">Mùa Hạ</span></div>
-                    <div className="text-2xl px-5 py-2 hover:bg-blue-300 caseTime" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setSelectedRange(setting.autumn)}><Clock className="inline-block mr-1 text-green-400" /><span className="align-middle">Mùa Thu</span></div>
-                    <div className="text-2xl px-5 py-2 hover:bg-blue-300 caseTime" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setSelectedRange(setting.winter)}><Clock className="inline-block mr-1 text-teal-300" /><span className="align-middle">Mùa Đông</span></div>
+                <div className="w-full h-auto lg:w-[20%] lg:h-[80%] shadow-lg shadow-slate-300 bg-white lg:rounded-md flex justify-around lg:block">
+                    <div className="flex flex-col  items-center lg:block text-base lg:text-2xl  px-1 lg:px-5 py-2 hover:bg-blue-300 caseTime" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setSelectedRange(setting.weekly)}>
+                        <CalendarWeek className="inline-block mr-1 text-yellow-400" />
+                        <span className="align-middle">Theo tuần</span></div>
+                    <div className="flex flex-col  items-center lg:block text-base lg:text-2xl  px-1 lg:px-5 py-2 hover:bg-blue-300 caseTime" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setSelectedRange(setting.spring)}>
+                        <Clock className="inline-block mr-1 text-pink-300" />
+                        <span className="align-middle">Mùa Xuân</span></div>
+                    <div className="flex flex-col  items-center lg:block text-base lg:text-2xl  px-1 lg:px-5 py-2 hover:bg-blue-300 caseTime" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setSelectedRange(setting.summer)}><
+                        Clock className="inline-block mr-1 text-orange-300" />
+                        <span className="align-middle">Mùa Hạ</span></div>
+                    <div className="flex flex-col  items-center lg:block text-base lg:text-2xl  px-1 lg:px-5 py-2 hover:bg-blue-300 caseTime" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setSelectedRange(setting.autumn)}>
+                        <Clock className="inline-block mr-1 text-green-400" />
+                        <span className="align-middle">Mùa Thu</span></div>
+                    <div className="flex flex-col  items-center lg:block text-base lg:text-2xl  px-1 lg:px-5 py-2 hover:bg-blue-300 caseTime" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setSelectedRange(setting.winter)}>
+                        <Clock className="inline-block mr-1 text-teal-300" />
+                        <span className="align-middle">Mùa Đông</span></div>
                 </div>
                 {/* Clock */}
-                <div className="w-[700px] h-[700px] rounded-full relative bg-slate-500 ml-[10%] ">
+                <div className="w-[400px] h-[400px] lg:w-[700px] lg:h-[700px] rounded-full relative bg-slate-500 lg:ml-[10%]  mx-auto mt-[10%]">
                     <div className="light absolute top-0 left-0 w-full h-full bg-[#ff9933] rounded-full rangeTime" style={{ "clip-path": "polygon(0 20%, 50% 50%,  0 50%  )" }}> </div>
                     <div className="light absolute top-0 left-0 w-full h-full bg-[#ffaa33] rounded-full rangeTime" style={{ "clip-path": "polygon(0 20%, 50% 50%,  20% 0  )" }}></div>
                     <div className="light absolute top-0 left-0 w-full h-full bg-[#ffb833] rounded-full rangeTime" style={{ "clip-path": "polygon(20% 0, 50% 50%,  50% 0  )" }}></div>
@@ -199,62 +209,62 @@ function Setting() {
                     <span className="text-lg absolute top-[35%]    left-[95%]   font-bold ">5</span>
                     <span className="text-lg absolute top-[50%]    left-[97%]   font-bold ">6</span>
 
-                    <div className="controlBar w-[70px] h-[70px] rounded-full bg-slate-300 top-[35%] left-[10%] absolute">
+                    <div className="controlBar w-[40px] h-[40px]  lg:w-[70px] lg:h-[70px] rounded-full bg-slate-300 top-[35%] left-[10%] absolute">
                         <button className="w-1/2 h-1/2  border-r-[1px] border-black plus">+</button>
                         <button className="w-1/2 h-1/2 minus">-</button>
                         <div className="border-t-[1px] border-black text-center "><span className="brightness">100</span>%</div>
                     </div>
-                    <div className="controlBar w-[70px] h-[70px] rounded-full bg-slate-300 top-[20%] left-[20%] absolute">
+                    <div className="controlBar w-[40px] h-[40px] lg:w-[70px] lg:h-[70px] rounded-full bg-slate-300 top-[20%] left-[20%] absolute">
                         <button className="w-1/2 h-1/2  border-r-[1px] border-black plus">+</button>
                         <button className="w-1/2 h-1/2 minus">-</button>
                         <div className="border-t-[1px] border-black text-center "><span className="brightness">80</span>%</div>
                     </div>
-                    <div className="controlBar w-[70px] h-[70px] rounded-full bg-slate-300 top-[10%] left-[35%] absolute">
+                    <div className="controlBar w-[40px] h-[40px] lg:w-[70px] lg:h-[70px] rounded-full bg-slate-300 top-[10%] left-[35%] absolute">
                         <button className="w-1/2 h-1/2  border-r-[1px] border-black plus">+</button>
                         <button className="w-1/2 h-1/2 minus">-</button>
                         <div className="border-t-[1px] border-black text-center "><span className="brightness">70</span>%</div>
                     </div>
-                    <div className="controlBar w-[70px] h-[70px] rounded-full bg-slate-300 top-[10%] left-[55%] absolute">
+                    <div className="controlBar w-[40px] h-[40px] lg:w-[70px] lg:h-[70px] rounded-full bg-slate-300 top-[10%] left-[55%] absolute">
                         <button className="w-1/2 h-1/2  border-r-[1px] border-black plus">+</button>
                         <button className="w-1/2 h-1/2 minus">-</button>
                         <div className="border-t-[1px] border-black text-center "><span className="brightness">50</span>%</div>
                     </div>
-                    <div className="controlBar w-[70px] h-[70px] rounded-full bg-slate-300 top-[20%] left-[70%] absolute">
+                    <div className="controlBar w-[40px] h-[40px] lg:w-[70px] lg:h-[70px] rounded-full bg-slate-300 top-[20%] left-[70%] absolute">
                         <button className="w-1/2 h-1/2  border-r-[1px] border-black plus">+</button>
                         <button className="w-1/2 h-1/2 minus">-</button>
                         <div className="border-t-[1px] border-black text-center "><span className="brightness">35</span>%</div>
                     </div>
-                    <div className="controlBar w-[70px] h-[70px] rounded-full bg-slate-300 top-[35%] left-[80%] absolute">
+                    <div className="controlBar w-[40px] h-[40px] lg:w-[70px] lg:h-[70px] rounded-full bg-slate-300 top-[35%] left-[80%] absolute">
                         <button className="w-1/2 h-1/2  border-r-[1px] border-black plus">+</button>
                         <button className="w-1/2 h-1/2 minus">-</button>
                         <div className="border-t-[1px] border-black text-center "><span className="brightness">25</span>%</div>
                     </div>
-                    <div className="controlBar w-[70px] h-[70px] rounded-full bg-slate-300 top-[52%] left-[80%] absolute">
+                    <div className="controlBar w-[40px] h-[40px] lg:w-[70px] lg:h-[70px] rounded-full bg-slate-300 top-[52%] left-[80%] absolute">
                         <button className="w-1/2 h-1/2  border-r-[1px] border-black plus">+</button>
                         <button className="w-1/2 h-1/2 minus">-</button>
                         <div className="border-t-[1px] border-black text-center "><span className="brightness">100</span>%</div>
                     </div>
-                    <div className="controlBar w-[70px] h-[70px] rounded-full bg-slate-300 top-[68%] left-[70%] absolute">
+                    <div className="controlBar w-[40px] h-[40px] lg:w-[70px] lg:h-[70px] rounded-full bg-slate-300 top-[68%] left-[70%] absolute">
                         <button className="w-1/2 h-1/2  border-r-[1px] border-black plus">+</button>
                         <button className="w-1/2 h-1/2 minus">-</button>
                         <div className="border-t-[1px] border-black text-center "><span className="brightness">80</span>%</div>
                     </div>
-                    <div className="controlBar w-[70px] h-[70px] rounded-full bg-slate-300 top-[80%] left-[55%] absolute">
+                    <div className="controlBar w-[40px] h-[40px] lg:w-[70px] lg:h-[70px] rounded-full bg-slate-300 top-[80%] left-[55%] absolute">
                         <button className="w-1/2 h-1/2  border-r-[1px] border-black plus">+</button>
                         <button className="w-1/2 h-1/2 minus">-</button>
                         <div className="border-t-[1px] border-black text-center "><span className="brightness">70</span>%</div>
                     </div>
-                    <div className="controlBar w-[70px] h-[70px] rounded-full bg-slate-300 top-[80%] left-[35%] absolute">
+                    <div className="controlBar w-[40px] h-[40px] lg:w-[70px] lg:h-[70px] rounded-full bg-slate-300 top-[80%] left-[35%] absolute">
                         <button className="w-1/2 h-1/2  border-r-[1px] border-black plus">+</button>
                         <button className="w-1/2 h-1/2 minus">-</button>
                         <div className="border-t-[1px] border-black text-center "><span className="brightness">50</span>%</div>
                     </div>
-                    <div className="controlBar w-[70px] h-[70px] rounded-full bg-slate-300 top-[68%] left-[20%] absolute">
+                    <div className="controlBar w-[40px] h-[40px] lg:w-[70px] lg:h-[70px] rounded-full bg-slate-300 top-[68%] left-[20%] absolute">
                         <button className="w-1/2 h-1/2  border-r-[1px] border-black plus">+</button>
                         <button className="w-1/2 h-1/2 minus">-</button>
                         <div className="border-t-[1px] border-black text-center "><span className="brightness">35</span>%</div>
                     </div>
-                    <div className="controlBar w-[70px] h-[70px] rounded-full bg-slate-300 top-[55%] left-[10%] absolute">
+                    <div className="controlBar w-[40px] h-[40px] lg:w-[70px] lg:h-[70px] rounded-full bg-slate-300 top-[55%] left-[10%] absolute">
                         <button className="w-1/2 h-1/2  border-r-[1px] border-black plus">+</button>
                         <button className="w-1/2 h-1/2 minus">-</button>
                         <div className="border-t-[1px] border-black text-center "><span className="brightness">25</span>%</div>

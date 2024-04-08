@@ -75,7 +75,7 @@ function AnalysisTable(props) {
 
         async function fetchData() {
             try {
-                const response = await axios.get('http://localhost:9999/get-all-lights');
+                const response = await axios.get('http://14.225.218.149:9999/get-all-lights');
                 setLight(response.data);
             } catch (error) {
                 console.log(error);
@@ -158,7 +158,7 @@ function AnalysisTable(props) {
             console.log(waitingTimeToOn);
             console.log(waitingTimeToOn);
             setTimeout(() => {
-                axios.post('http://localhost:9999/active-light', {
+                axios.post('http://14.225.218.149:9999/active-light', {
                     id: id,
                     status: true,
                 }).catch((error) => {
@@ -170,7 +170,7 @@ function AnalysisTable(props) {
             const now = Date.now();
             const waitingTimeToOff = (onTimeOff - now);
             setTimeout(() => {
-                axios.post('http://localhost:9999/active-light', {
+                axios.post('http://14.225.218.149:9999/active-light', {
                     id: id,
                     status: false,
                 }).catch((error) => {
@@ -184,7 +184,7 @@ function AnalysisTable(props) {
             const waitingTimeToOn = (onSetTime - now);
             const waitingTimeToOff = (onTimeOff - now);
             setTimeout(() => {
-                axios.post('http://localhost:9999/active-light', {
+                axios.post('http://14.225.218.149:9999/active-light', {
                     id: id,
                     status: true,
                 }).catch((error) => {
@@ -192,7 +192,7 @@ function AnalysisTable(props) {
                 })
             }, waitingTimeToOn)
             setTimeout(() => {
-                axios.post('http://localhost:9999/active-light', {
+                axios.post('http://14.225.218.149:9999/active-light', {
                     id: id,
                     status: false,
                 }).catch((error) => {
@@ -201,7 +201,7 @@ function AnalysisTable(props) {
             }, waitingTimeToOff)
         } else if (onTime === null && offTime === null) {
             console.log(checked);
-            axios.post('http://localhost:9999/active-light', {
+            axios.post('http://14.225.218.149:9999/active-light', {
                 id: id,
                 status: checked,
             }).catch((error) => {
@@ -210,7 +210,7 @@ function AnalysisTable(props) {
         }
 
         if (checked == true && parseInt(brightness) > 0) {
-            axios.post('http://localhost:9999/brightness', {
+            axios.post('http://14.225.218.149:9999/brightness', {
                 id: id,
                 brightness: parseInt(brightness),
             }).catch((error) => {
@@ -222,7 +222,7 @@ function AnalysisTable(props) {
     }
     return (
         <Default>
-            <div className="md:w-[80%] w-auto h-screen  bg-white shadow-lg rounded-md mx-auto mt-10 p-10 opacity-75">
+            <div className="w-auto overflow-y-auto w- md:w-[80%] h-screen  bg-white shadow-lg rounded-md mx-auto mt-10 p-10 opacity-75">
                 <table id="light" className="border border-1 border-black">
                     <thead>
                         <tr className="border-b-2 border-black text-center">
@@ -277,7 +277,7 @@ function AnalysisTable(props) {
                         <div class="modal-body">
                             {toastMessage && <div class="text-success text-lg text-center">Đã cập nhật trạng thái đèn thành công</div>}
 
-                            <div className="flex gap-5">
+                            <div className="block md:flex gap-5">
                                 <div className="flex items-center">
                                     <span className="font-semibold">Thời gian bật:</span><span className="mx-2"></span><span><input type="time" onChange={e => setOnTime(e.target.value)} /></span>
                                 </div>

@@ -27,7 +27,7 @@ function ProgressBar(props) {
     }, [])
 
     return (
-        <div className="flex gap-2">
+        <div className="flex gap-2 justify-between my-[10%] md:my-0 md:justify-normal">
             <div className="w-auto">
                 <div className="text-xl font-bold text-red-600">{props.progressData.title}</div>
                 <div className="text-5xl text-green-600" id="percent"><span className="percent">{props.progressData.percentage}</span>%</div>
@@ -37,15 +37,15 @@ function ProgressBar(props) {
             <div className="h-max-full w-auto bg-slate-300 border border-1 border-white flex flex-col justify-end relative">
                 <div className={`p-1`} style={{ "height": `${100 - parseInt(props.progressData.percentage)}%` }}></div>
                 <div className={`p-1 h-[${props.progressData.percentage}%] bg-green-600 text-white col-height `} style={{ "height": `${props.progressData.percentage}%` }}>{props.progressData.percentage}%</div>
-                <div className="w-full h-[10px] bg-white absolute bottom-[10%] left-0"></div>
-                <div className="w-full h-[10px] bg-white absolute bottom-[20%] left-0"></div>
-                <div className="w-full h-[10px] bg-white absolute bottom-[30%] left-0"></div>
-                <div className="w-full h-[10px] bg-white absolute bottom-[40%] left-0"></div>
-                <div className="w-full h-[10px] bg-white absolute bottom-[50%] left-0"></div>
-                <div className="w-full h-[10px] bg-white absolute bottom-[60%] left-0"></div>
-                <div className="w-full h-[10px] bg-white absolute bottom-[70%] left-0"></div>
-                <div className="w-full h-[10px] bg-white absolute bottom-[80%] left-0"></div>
-                <div className="w-full h-[10px] bg-white absolute bottom-[90%] left-0"></div>
+                <div className="w-full h-[10px] bg-white absolute bottom-[20%] md:bottom-[10%] left-0"></div>
+                <div className="w-full h-[10px] bg-white absolute bottom-[40%] md:bottom-[20%] left-0"></div>
+                <div className="w-full h-[10px] bg-white absolute bottom-[60%] md:bottom-[30%] left-0"></div>
+                <div className="w-full h-[10px] bg-white absolute bottom-[80%] md:bottom-[40%] left-0"></div>
+                <div className="w-full h-[10px] bg-white absolute hidden md:block md:bottom-[50%] left-0"></div>
+                <div className="w-full h-[10px] bg-white absolute hidden md:block md:bottom-[60%] left-0"></div>
+                <div className="w-full h-[10px] bg-white absolute hidden md:block md:bottom-[70%] left-0"></div>
+                <div className="w-full h-[10px] bg-white absolute hidden md:block md:bottom-[80%] left-0"></div>
+                <div className="w-full h-[10px] bg-white absolute hidden md:block md:bottom-[90%] left-0"></div>
             </div>
         </div>
     )

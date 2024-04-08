@@ -5,12 +5,12 @@ import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 
 function Sidebar1(props) {
     return (
-        <div className="bg-[white] text-black h-screen w-[15%] border-r-[1px] border-[#cac6c6]">
+        <div className="bg-[white] text-black h-screen lg:w-[35%] xl:w-[20%] border-r-[1px] border-[#cac6c6] hidden lg:block">
             <div className='bg-white h-[20%]'>
-                <img src={Logo} className='w-[75%] mx-auto' />
+                <img src={Logo} className='w-[65%] mx-auto' />
             </div>
-            <div className='ml-5 mt-5 w-full'>
-                <Sidebar className='w-fit'>
+            <div className='ml-5 mt-5 w-max'>
+                <Sidebar className='w-full'>
                     <Menu>
                         <SubMenu label="Việt Nam" className='font-bold text-xl'>
                             <SubMenu label="Hà Nội" className='text-base'>
